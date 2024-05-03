@@ -33,6 +33,7 @@ class RenderWidget : public QOpenGLWidget
     void rotateAboutYM();
     void rotateAboutXP();
     void rotateAboutXM();
+    void rotateAboutZP();
 
 
   protected:

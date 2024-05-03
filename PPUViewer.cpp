@@ -52,4 +52,9 @@ PPUViewer::PPUViewer()
   m_RotateXMButton->setObjectName(QStringLiteral("RotateXPButton"));
   mainLayout->addWidget(m_RotateXMButton);
   connect(m_RotateXMButton, SIGNAL(pressed()), m_RenderWidget, SLOT(rotateAboutXM()));
+
+  m_RotateZPButton = new QPushButton("Rotate +Z");
+  m_RotateZPButton->setObjectName(QStringLiteral("RotateXPButton"));
+  mainLayout->addWidget(m_RotateZPButton);
+  connect(m_RotateZPButton, SIGNAL(pressed()), m_RenderWidget, SLOT(rotateAboutZP()));
 }

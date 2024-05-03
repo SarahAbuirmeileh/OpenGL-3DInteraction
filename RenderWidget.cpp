@@ -155,6 +155,20 @@ void RenderWidget::rotateAboutXM()
   update();
 }
 
+void RenderWidget::rotateAboutZP()
+{
+  double angle = (5.0 / 180 * M_PI);
+
+
+  double newx = m_ViewPoint.x * cos(angle) + m_ViewPoint.y * sin(angle);
+  double newy = -m_ViewPoint.x * sin(angle) + m_ViewPoint.y * cos(angle);
+
+  m_ViewPoint.x = newx;
+  m_ViewPoint.y = newy;
+
+  update();
+}
+
 
 void RenderWidget::drawCube(void)
 {
