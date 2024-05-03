@@ -31,7 +31,7 @@ class PPUViewer : public QWidget
     QPushButton* m_RotateXPButton;
     QPushButton* m_RotateXMButton;
     QPushButton* m_RotateZPButton;
-
+    QPushButton* m_RotateZNButton;
 
 };
 
