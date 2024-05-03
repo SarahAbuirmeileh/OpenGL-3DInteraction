@@ -28,6 +28,7 @@ class PPUViewer : public QWidget
     QPushButton* m_ZoomOutButton;
     QPushButton* m_RotateButton;
     QPushButton* m_RotateYMButton;
+    QPushButton* m_RotateXPButton;
 
 
 };
