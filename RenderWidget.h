@@ -35,6 +35,8 @@ class RenderWidget : public QOpenGLWidget
     void rotateAboutXM();
     void rotateAboutZP();
     void rotateAboutZN();
+    void rotateAboutX(double angle);
+    void rotateAboutY(double angle);
 
 
   protected:
@@ -42,7 +44,13 @@ class RenderWidget : public QOpenGLWidget
     void resizeGL(int w, int h) override;
     void paintGL() override;
 
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void wheelEvent(QWheelEvent * event);
+
     void drawCube(void);
+
 
     typedef struct
     {
@@ -50,6 +58,20 @@ class RenderWidget : public QOpenGLWidget
     } Point3D;
 
     Point3D m_ViewPoint;
+    
+    enum MouseButtonState 
+    {
+      NoButton = 0x00000000,
+      LeftButton = 0x00000001,
+      RightButton = 0x00000002,
+      MiddleButton = 0x00000004,
+    };
+
+    int m_LastAngle;
+    int m_LastMouseX;
+    int m_LastMouseY;
+
+    bool IS_LeftButton, IS_MiddleButton, IS_RightButton;
 
   private:
     double m_FieldOfView = 15.0; 

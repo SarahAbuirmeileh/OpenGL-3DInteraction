@@ -11,6 +11,8 @@
 #include <GL/freeglut.h>
 #include <QPainter>
 #include <cmath>
+#include <QMouseEvent>
+
 
 RenderWidget::RenderWidget(QWidget *parent) : QOpenGLWidget(parent)
 {
@@ -256,3 +258,72 @@ void RenderWidget::drawCube(void)
 
   glFlush();
 }
+
+void RenderWidget::rotateAboutY(double angle)
+{
+  angle = angle / 180 * M_PI;
+
+ // std::cout << "Rotating about Y by " << angle << "\n";
+
+  double newx = m_ViewPoint.x*cos(angle) + m_ViewPoint.z*sin(angle);
+  double newz = -m_ViewPoint.x*sin(angle) + m_ViewPoint.z*cos(angle);
+
+  m_ViewPoint.x = newx;
+  m_ViewPoint.z = newz;
+
+  update();
+}
+
+void RenderWidget::rotateAboutX(double angle)
+{
+  angle = angle / 180 * M_PI;
+
+  double newy = m_ViewPoint.y * cos(angle) + m_ViewPoint.z * sin(angle);
+  double newz = -m_ViewPoint.y * sin(angle) + m_ViewPoint.z * cos(angle);
+
+  m_ViewPoint.y = newy;
+  m_ViewPoint.z = newz;
+
+  update();
+}
+
+
+void RenderWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+  IS_LeftButton = IS_MiddleButton = IS_RightButton = false;
+}
+
+
+void RenderWidget::mousePressEvent(QMouseEvent *event)
+{
+  m_LastMouseX = event->x();
+  m_LastMouseY = event->y();
+
+ // std::cout << "Mouse pressed buttom is: " << event->button() << std::endl;
+
+  if (event->button() == LeftButton)    IS_LeftButton = true;
+  if (event->button() == MiddleButton)  IS_MiddleButton = true;
+  if (event->button() == RightButton)   IS_RightButton = true;
+};
+
+
+void RenderWidget::mouseMoveEvent(QMouseEvent *event)
+{
+  int dx = event->x() - m_LastMouseX;
+  int dy = event->y() - m_LastMouseY;
+
+  if (IS_LeftButton && !IS_MiddleButton)
+  {
+    rotateAboutY(-(double)dx / 2);
+    rotateAboutX(-(double)dy / 2);
+  }
+
+  m_LastMouseX = event->x();
+  m_LastMouseY = event->y();
+};
+
+
+void RenderWidget::wheelEvent(QWheelEvent * event)
+{
+
+};
