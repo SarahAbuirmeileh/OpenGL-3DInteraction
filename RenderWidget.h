@@ -51,4 +51,7 @@ class RenderWidget : public QOpenGLWidget
 
     Point3D m_ViewPoint;
 
+  private:
+    double m_FieldOfView = 15.0; 
+
 };
