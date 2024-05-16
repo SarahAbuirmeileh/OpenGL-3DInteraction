@@ -397,7 +397,7 @@ void RenderWidget::drawCubeWithLighting(void){
   glMaterialfv(GL_FRONT, GL_AMBIENT, emerald_ambient);
   glMaterialfv(GL_FRONT, GL_DIFFUSE, emerald_diffuse);
   glMaterialfv(GL_FRONT, GL_SPECULAR, emerald_specular);
-  glMaterialfv(GL_FRONT, GL_SHININESS, emerald_shininessturquoise_shininess);
+  glMaterialfv(GL_FRONT, GL_SHININESS, emerald_shininess);
 
   // Emerald
   glNormal3fv(cubeCorner[2]);
