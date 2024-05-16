@@ -50,7 +50,7 @@ class RenderWidget : public QOpenGLWidget
     void wheelEvent(QWheelEvent * event);
 
     void drawCube(void);
-
+    void drawCubeWithLighting(void);
 
     typedef struct
     {
@@ -74,6 +74,6 @@ class RenderWidget : public QOpenGLWidget
     bool IS_LeftButton, IS_MiddleButton, IS_RightButton;
 
   private:
-    double m_FieldOfView = 15.0; 
+    double m_FieldOfView = 25.0; 
 
 };
